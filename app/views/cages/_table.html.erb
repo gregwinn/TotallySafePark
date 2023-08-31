@@ -22,8 +22,8 @@
 				<td><%=cage.id %></td>
 				<td><%= link_to cage_path(cage) do %><%= cage.name %><% end %></td>
 				<td><%= cage.cage_type.titleize %></td>
-				<td><%= cage.dinosaurs.count %></td>
-				<td><%= cage_status(cage) %></td>
+				<td>[<%= cage.current_capacity %>] <%= cage_status(cage) %></td>
+				<td><%= cage_power(cage) %></td>
 				<td>
 					<%= link_to icon('fa-solid', 'pencil'), edit_cage_path(cage), class: "me-3" %>
 					<%= link_to icon('fa-solid', 'trash'), cage_path(cage), method: :delete, data: { confirm: "Make sure the cage is empty!" }, class: "text-danger" %>

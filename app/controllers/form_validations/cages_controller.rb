@@ -19,6 +19,6 @@ class FormValidations::CagesController < ApplicationController
 
 	private
 	def cage_params
-		params.require(:cage).permit(:name, :max_capacity, :cage_type)
+		params.require(:cage).permit(:name, :max_capacity, :cage_type, :power)
 	end
 end

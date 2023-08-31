@@ -9,10 +9,18 @@ module CagesHelper
 	end
 
 	def cage_spots_left(cage)
-		cage.max_capacity - cage.dinosaurs.count
+		cage.max_capacity - cage.current_capacity
 	end
 
 	def is_cage_full?(cage)
-		cage.dinosaurs.count >= cage.max_capacity
+		cage.current_capacity >= cage.max_capacity
+	end
+
+	def cage_power(cage)
+		if cage.power == "ACTIVE"
+			"<span class='text-success'>#{icon('fa-solid', 'bolt')} POWERED ON</span>".html_safe
+		else
+			"<span class='text-danger'>#{icon('fa-solid', 'triangle-exclamation')} POWERED DOWN</span>".html_safe
+		end
 	end
 end
