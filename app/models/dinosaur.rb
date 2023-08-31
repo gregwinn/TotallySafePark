@@ -21,6 +21,7 @@ class Dinosaur < ApplicationRecord
 	validates :name, presence: { message: "Dinosaurs must have a name or they will get lost!" }
 	validates :species, :diet, presence: true
 	validates :cage_id, presence: { message: "This dinosaur must be assigned to a cage or it might eat the visitors!" }, if: -> { cage_id.present? }
+	validate :cage_powered_on
 
 	# Check to make sure there is room for the Dino in the cage
 	validate do |dinosaur|
@@ -31,6 +32,12 @@ class Dinosaur < ApplicationRecord
 
 
 	private
+
+	def cage_powered_on
+		if cage.present? && cage.power == "DOWN"
+			errors.add(:cage, "It appears you're attempting to unleash the mighty lizards in a powered-off cage. Power up that cage before you embark on your dino escapade!")
+		end
+	end
 
 	def determine_diet
 		if species_in_carnivore_list?
