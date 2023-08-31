@@ -9,14 +9,17 @@
 				<li class="nav-item">
 					<%=link_to root_path, class: "nav-link" do %>Dashboard<% end %>
 				</li>
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-						Cage Management
-					</a>
-					<ul class="dropdown-menu">
-						<li><%= link_to new_cage_path, class: "dropdown-item" do %><%= icon('fa-solid', 'xmarks-lines') %> Install a New Cage<% end %></li>
-					</ul>
-				</li>
+
+				<% if current_user.builder? %>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Cage Management
+						</a>
+						<ul class="dropdown-menu">
+							<li><%= link_to new_cage_path, class: "dropdown-item" do %><%= icon('fa-solid', 'xmarks-lines') %> Install a New Cage<% end %></li>
+						</ul>
+					</li>
+				<% end %>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 						Dinosaur Management
