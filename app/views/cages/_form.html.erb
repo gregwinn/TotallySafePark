@@ -32,6 +32,18 @@
 				<%= form.select :cage_type, Cage.cage_types.keys.map { |t| [t.titleize, t] }, {}, class: "form-select" %>
 			</div>
 		</div>
+
+		<div class="col">
+			<div class="mb-3">
+				<%= form.label :power %>
+				<%= form.select :power, Cage.powers.keys.map { |p| [p.titleize, p] }, {}, class: "form-select" %>
+				<% if cage.errors.include?(:power) %>
+					<div id="cage_power_error" class="text-danger">
+						<%= cage.errors[:power].join(', ') %>
+					</div>
+				<% end %>
+			</div>
+		</div>
 	</div>
 
 	<div class="row">
