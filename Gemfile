@@ -76,3 +76,4 @@ gem "font-awesome-sass", "~> 6.4.2"
 gem "jquery-rails", "~> 4.4.0"
 gem "devise", "~> 4.9.2"
 gem 'simple_token_authentication', '~> 1.0'
+gem 'cancancan', '~> 3.5.0'
