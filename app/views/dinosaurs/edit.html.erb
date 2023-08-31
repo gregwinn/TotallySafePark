@@ -1,0 +1,12 @@
+<div class="row">
+	<div class="col">
+		<h2><%= image_tag "nice-dino-small.png" %> This Dinosaur is already hatched</h2>
+		<p class="text-warning"><strong>Warning:</strong> Renaming a dinosaur or moving it to a new cage might lead to a case of prehistoric confusion and a touch of dino drama!</p>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col" data-controller="form-validation" data-form-validation-target="output" data-form-validation-url-value="<%= form_validations_dinosaurs_path %>">
+		<%= render partial: "form", locals: { dinosaur: @dinosaur, edit: true } %>
+	</div>
+</div>

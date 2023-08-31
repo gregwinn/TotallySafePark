@@ -1,0 +1,13 @@
+<div class="row">
+	<div class="col">
+		<h2><%= icon('fa-solid', 'egg') %> Lets hatch a Dinosaur</h2>
+		<p class="text-muted"><strong>Welcome to the lab:</strong> Here you can hatch a dino egg and add them to a cage before they start eating people.</p>
+		<p class="text-warning"><strong>Warning:</strong> This is a dangerous process and should only be done by trained professionals.</p>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col" data-controller="form-validation" data-form-validation-target="output" data-form-validation-url-value="<%= form_validations_dinosaurs_path %>">
+		<%= render partial: "form", locals: { dinosaur: @dinosaur, edit: false } %>
+	</div>
+</div>

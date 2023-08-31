@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary mb-4">
+	<div class="container-fluid">
+		<%=link_to root_path, class: "navbar-brand" do %><%=image_tag "jp-logo-tiny.png", alt: "JP Logo" %><% end %>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				<li class="nav-item">
+					<%=link_to root_path, class: "nav-link" do %>Dashboard<% end %>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						Cage Management
+					</a>
+					<ul class="dropdown-menu">
+						<li><%= link_to new_cage_path, class: "dropdown-item" do %><%= icon('fa-solid', 'xmarks-lines') %> Install a New Cage<% end %></li>
+					</ul>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						Dinosaur Management
+					</a>
+					<ul class="dropdown-menu">
+						<li><%= link_to new_dinosaur_path, class: "dropdown-item" do %><%= icon('fa-solid', 'egg', class: "me-1 ms-1") %> Hatch a new Dinosaur<% end %></li>
+						<li><%= link_to dinosaurs_path, class: "dropdown-item" do %><%= icon('fa-solid', 'dog') %> Dinosaur Inventory<% end %></li>
+					</ul>
+				</li>
+			</ul>
+			<div class="d-flex">
+				<p class="mb-0 me-4 text-info"><%= current_user.name %></p>
+			</div>
+			<div class="d-flex">
+				<%= link_to destroy_user_session_path, method: :delete, class: "btn btn-outline-danger" do %><%= icon('fa-solid', 'sign-out') %> Sign Out<% end %>
+			</div>
+		</div>
+	</div>
+</nav>

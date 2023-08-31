@@ -1,0 +1,48 @@
+<%= form_with model: dinosaur, data: { form_validation_target: "form" } do |form| %>
+	<div class="row">
+		<div class="col">
+			<div class="mb-3">
+				<%= form.label :name %>
+				<%= form.text_field :name, class: "form-control" %>
+				<% if dinosaur.errors.include?(:name) %>
+					<div id="dinosaur_name_error" class="text-danger">
+						<%= dinosaur.errors[:name].join(', ') %>
+					</div>
+				<% end %>
+			</div>
+			<div class="mb-3">
+				<%= form.label :species %>
+				<%= form.select :species, Dinosaur.species.keys.map { |s| [s.titleize, s] }, {}, class: "form-select" %>
+				<% if dinosaur.errors.include?(:species) %>
+					<div id="dinosaur_species_error" class="text-danger">
+						<%= dinosaur.errors[:species].join(', ') %>
+					</div>
+				<% end %>
+			</div>
+		</div>
+
+		<div class="col">
+			<div class="mb-3">
+				<%= form.label :cage %>
+				<%= form.select :cage_id, Cage.all.map { |c| [c.name, c.id] }, {}, class: "form-select" %>
+				<% if dinosaur.errors.include?(:cage) %>
+					<div id="dinosaur_cage_error" class="text-danger">
+						<%= dinosaur.errors[:cage].join(', ') %>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<% if dinosaur.errors.include?(:diet) %>
+				<div id="dinosaur_diet_error" class="text-danger">
+					<%= dinosaur.errors[:diet].join(', ') %>
+				</div>
+			<% end %>
+			<%= button_tag class: "btn btn-primary float-end" do %><%= icon('fa-solid', 'egg') %>
+				<%= edit ? 'Re Hatch?' : 'Hatch!' %>
+			<% end %>
+		</div>
+	</div>
+<% end %>

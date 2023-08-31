@@ -1,0 +1,13 @@
+<div class="row">
+	<div class="col">
+		<h2>Install a new Cage</h2>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col">
+		<div data-controller="form-validation" data-form-validation-target="output" data-form-validation-url-value="<%= form_validations_cages_path %>">
+			<%= render partial: "cages/form", locals: { cage: @cage } %>
+		</div>
+	</div>
+</div>

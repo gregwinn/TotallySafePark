@@ -1,0 +1,15 @@
+<% if message || alert %>
+	<div data-controller="notifications" data-notifications-status-value="true">
+		<div id="toast_notification" class="toast mb-3 ms-3 bottom-0 start-0 align-items-center <%= alert ? "text-bg-danger" : "text-bg-success" %> border-0" role="alert">
+			<div class="d-flex">
+				<div class="toast-body">
+					<p class="mb-0">
+						<%= image_tag("t-rex-small-ww.png", class: "float-start me-1") %>
+						<%= message || alert %></p>
+				</div>
+				<button type="button" data-action="notifications#hide" class="btn-close btn-close-white me-2 m-auto"></button>
+			</div>
+		</div>
+	</div>
+	<% flash.discard(flash.keys.first) %>
+<% end %>

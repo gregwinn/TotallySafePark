@@ -1,0 +1,44 @@
+<%= form_with model: cage, data: { form_validation_target: "form" } do |form| %>
+	<div class="row">
+		<div class="col">
+			<div class="mb-3">
+				<%= form.label :name %>
+				<%= form.text_field :name, class: "form-control", data: { action: "form-validation#handleChange" } %>
+				<% if cage.errors.include?(:name) %>
+					<div id="cage_name_error" class="text-danger">
+						<%= cage.errors[:name].join(', ') %>
+					</div>
+				<% end %>
+			</div>
+		</div>
+
+		<div class="col">
+			<div class="mb-3">
+				<%= form.label :max_capacity %>
+				<%= form.number_field :max_capacity, class: "form-control", data: { action: "form-validation#handleChange" } %>
+				<% if cage.errors.include?(:max_capacity) %>
+					<div id="cage_max_capacity_error" class="text-danger">
+						<%= cage.errors[:max_capacity].join(', ') %>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col">
+			<div class="mb-3">
+				<%= form.label :cage_type %>
+				<%= form.select :cage_type, Cage.cage_types.keys.map { |t| [t.titleize, t] }, {}, class: "form-select" %>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col">
+			<div class="mb-3">
+				<%= button_tag class: "btn btn-primary float-end" do %><%= icon('fa-solid', 'floppy-disk') %> Install NOW<% end %>
+			</div>
+		</div>
+	</div>
+<% end %>

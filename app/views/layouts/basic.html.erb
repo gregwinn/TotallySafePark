@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html data-bs-theme="dark">
+<head>
+	<title>TotallySafePark</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<%= csrf_meta_tags %>
+	<%= csp_meta_tag %>
+
+	<%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+	<%= javascript_importmap_tags %>
+</head>
+
+<body class="container-sm">
+<%= render partial: "shared/notification", locals: { message: flash[:notice], alert: flash[:alert] } %>
+<div class="row justify-content-center">
+	<div class="col-4">
+		<p class="text-center mt-3">
+			<%= image_tag "t-rex-large.png" %>
+		</p>
+		<%= yield %>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<% if @dinosaurs.blank? %>
+
+<% else %>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Species</th>
+				<th>Diet</th>
+				<th>Cage</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @dinosaurs.each do |dinosaur| %>
+				<tr>
+					<td><%= dinosaur.name %></td>
+					<td><%= dinosaur.species %></td>
+					<td><%= dinosaur.diet %></td>
+					<td><%= link_to dinosaur.cage.name, cage_path(dinosaur.cage) %></td>
+					<td>
+						<%= link_to icon('fa-solid', 'pencil'), edit_dinosaur_path(dinosaur), class: "me-3" %>
+						<%= link_to icon('fa-solid', 'trash'), dinosaur_path(dinosaur), method: :delete, data: { confirm: "Deleting a dinosaur? Well, there goes their chance at a Jurassic retirement!" }, class: "text-danger" %>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+<% end %>
