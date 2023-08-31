@@ -3,7 +3,8 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  enum role: [:doctor, :scientist, :builder, :goldblum]
+
+  enum role: %i[doctor scientist builder goldblum]
 
   def full_name
     "#{first_name} #{last_name}"
