@@ -4,6 +4,11 @@ class CagesController < ApplicationController
     before_action :authenticate_user!
     def index
         @cages = Cage.all
+        cage_column_names = Cage.column_names
+        matching_keys = params.keys.select { |key| cage_column_names.include?(key) }
+        if matching_keys
+            @cages = @cages.where(matching_keys.map { |key| "#{key} = ?" }.join(" AND "), *matching_keys.map { |key| params[key] })
+        end
         respond_to do |format|
 	        format.html
 			format.json { render json: @cages }
@@ -76,6 +81,6 @@ class CagesController < ApplicationController
 
     private
     def cage_params
-        params.require(:cage).permit(:name, :max_capacity, :cage_type)
+        params.require(:cage).permit(:name, :max_capacity, :cage_type, :power)
     end
 end
