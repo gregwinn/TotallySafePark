@@ -11,9 +11,9 @@
 # Jurassic Park Setup
 ### Setup and Server Start
 1. Run `bundle install` to install all gems
-2. Run `rake db:create` to create the database
-3. Run `rake db:migrate` to run migrations
-4. Run `rake db:seed` to seed the database
+2. Run `rails db:create` to create the database
+3. Run `rails db:migrate` to run migrations
+4. Run `rails db:seed` to seed the database
 5. Run `rails s` to start the server
 6. Navigate to `localhost:3000` in your browser
 7. Enjoy!
