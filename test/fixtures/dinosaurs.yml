@@ -4,8 +4,22 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+dinosaur_one:
+  name: Dino One
+  species: "Tyrannosaurus"
+  cage: cage_one
+
+dinosaur_two:
+  name: Dino Two
+  species: "Velociraptor"
+  cage: cage_two
+
+dinosaur_three:
+  name: Dino One
+  species: "Tyrannosaurus"
+  cage: cage_with_dinosaurs
+
+dinosaur_four:
+  name: Dino Two
+  species: "Velociraptor"
+  cage: cage_with_dinosaurs
