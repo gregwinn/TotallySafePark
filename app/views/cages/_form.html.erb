@@ -30,6 +30,11 @@
 			<div class="mb-3">
 				<%= form.label :cage_type %>
 				<%= form.select :cage_type, Cage.cage_types.keys.map { |t| [t.titleize, t] }, {}, class: "form-select" %>
+				<% if cage.errors.include?(:cage_type) %>
+					<div id="cage_cage_type_error" class="text-danger">
+						<%= cage.errors[:cage_type].join(', ') %>
+					</div>
+				<% end %>
 			</div>
 		</div>
 

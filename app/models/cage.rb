@@ -8,6 +8,7 @@ class Cage < ApplicationRecord
 	validates :max_capacity, presence: true, numericality: { greater_than: 0 }
 	validate :check_empty_before_destroy, on: :destroy
 	validate :cannot_power_off_with_dinosaurs
+	validate :cage_type_change_with_dinosaurs
 
 	after_initialize :set_default_cage_type, if: :new_record?
 
@@ -34,6 +35,12 @@ class Cage < ApplicationRecord
 	def check_empty_before_destroy
 		if dinosaurs.any?
 			errors.add(:errors, "Whoa there, hold your raptors! Attempting to destroy a cage while there are dinosaurs around is like challenging a T-Rex to a game of hide and seek. Safety first, please!")
+		end
+	end
+
+	def cage_type_change_with_dinosaurs
+		if cage_type_changed? && dinosaurs.present?
+			errors.add(:cage_type, "Cannot change cage type when there are dinosaurs in the cage.")
 		end
 	end
 end
