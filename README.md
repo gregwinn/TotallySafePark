@@ -40,6 +40,10 @@ curl --location --request GET 'localhost:3000/cages' \
 
 ---
 
+## Testing
+- Run `rails test` to run all tests
+
+---
 ## API Endpoints
 ### Dinosaurs
 - `GET /dinosaurs` - Returns all dinosaurs
