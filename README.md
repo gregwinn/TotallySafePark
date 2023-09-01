@@ -101,3 +101,48 @@ curl --location --request GET 'localhost:3000/cages' \
 - - cage_types: `herbivore`, `carnivore`
 - `PUT /cages/:id` - Updates a cage
 - `DELETE /cages/:id` - Deletes a cage
+
+
+### API Examples
+
+**Access Error**
+```
+{
+    "error": "Ah, ah, ah! You didn't say the magic word!"
+}
+```
+
+**Cage Example**
+```
+// Create a new cage
+curl --location 'localhost:3000/cages' \
+--header 'X-User-Email: nedry@jp-park.net' \
+--header 'X-User-Token: IALVOP' \
+--header 'Accept: application/json' \
+--header 'Content-Type: application/json' \
+--data '{
+    "cage": {
+        "name": "My cage that is very safe",
+        "max_capacity": 8,
+        "power": true,
+        "cage_type": 1
+    }
+}'
+```
+
+**Dinosaur Example**
+```
+// Create a new dinosaur
+curl --location 'localhost:3000/dinosaurs' \
+--header 'X-User-Email: nedry@jp-park.net' \
+--header 'X-User-Token: IALVOP' \
+--header 'Accept: application/json' \
+--header 'Content-Type: application/json' \
+--data '{
+    "dinosaur": {
+        "name": "Dino Mite",
+        "species": 0,
+        "cage_id": 5
+    }
+}'
+```
