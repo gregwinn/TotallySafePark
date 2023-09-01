@@ -47,8 +47,8 @@ curl --location --request GET 'localhost:3000/cages' \
 ## API Endpoints
 ### Dinosaurs
 - `GET /dinosaurs` - Returns all dinosaurs
-- - Filter by species: `GET /dinosaurs?species=0`
-- - Filter by diet: `GET /dinosaurs?diet=0`
+  - Filter by species: `GET /dinosaurs?species=0`
+  - Filter by diet: `GET /dinosaurs?diet=0`
 
 **Species Values**
 
@@ -72,15 +72,15 @@ curl --location --request GET 'localhost:3000/cages' \
 
 - `GET /dinosaurs/:id` - Returns a single dinosaur
 - `POST /dinosaurs` - Creates a new dinosaur Required Params: `name`, `species`, `cage_id`
-- - species: `Tyrannosaurus`, `Velociraptor`, `Spinosaurus`, `Megalosaurus`, `Brachiosaurus`, `Stegosaurus`, `Ankylosaurus`, `Triceratops`
+  - species: `Tyrannosaurus`, `Velociraptor`, `Spinosaurus`, `Megalosaurus`, `Brachiosaurus`, `Stegosaurus`, `Ankylosaurus`, `Triceratops`
 - `PUT /dinosaurs/:id` - Updates a dinosaur
 - `DELETE /dinosaurs/:id` - Deletes a dinosaur
 
 ### Cages
 - `GET /cages` - Returns all cages
-- - Filter by cage type: `GET /cages?cage_type=0`
-- - Filter by max capacity: `GET /cages?max_capacity=0`
-- - Filter by power status: `GET /cages?power=false`
+  - Filter by cage type: `GET /cages?cage_type=0`
+  - Filter by max capacity: `GET /cages?max_capacity=0`
+  - Filter by power status: `GET /cages?power=false`
 
 **Cage Type Values**
 
@@ -98,7 +98,7 @@ curl --location --request GET 'localhost:3000/cages' \
 
 - `GET /cages/:id` - Returns a single cage
 - `POST /cages` - Creates a new cage Required Params: `name`, `max_capacity`, `cage_type`
-- - cage_types: `herbivore`, `carnivore`
+  - cage_types: `herbivore`, `carnivore`
 - `PUT /cages/:id` - Updates a cage
 - `DELETE /cages/:id` - Deletes a cage
 
