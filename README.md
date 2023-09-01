@@ -9,6 +9,12 @@
 ```
 
 # Jurassic Park Setup
+
+### Versions & Requirements
+- Ruby 3.1.2
+- Rails 7.0.7
+- PostgreSQL
+
 ### Setup and Server Start
 1. Run `bundle install` to install all gems
 2. Run `rails db:create` to create the database
@@ -16,7 +22,7 @@
 4. Run `rails db:seed` to seed the database
 5. Run `rails s` to start the server
 6. Navigate to `localhost:3000` in your browser
-7. Enjoy!
+7. Enjoy, but warning dinosaurs are dangerous and may eat you. Good luck.
 ---
 
 ### Notes
@@ -35,7 +41,7 @@ curl --location --request GET 'localhost:3000/cages' \
 ```
 
 **User Roles**
-- All Users: Can create, update, and delete dinosaurs.
+- All Users: Can create, update, and delete dinosaurs, along with update cages.
 - Builders: Can create, cages.
 
 ---
