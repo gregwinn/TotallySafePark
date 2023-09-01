@@ -3,6 +3,8 @@ class CagesController < ApplicationController
     acts_as_token_authentication_handler_for User
     before_action :authenticate_user!
     load_and_authorize_resource
+
+    rescue_from ActiveRecord::RecordNotFound, with: :invalid_cage
     def index
         @cages = Cage.all
         cage_column_names = Cage.column_names
@@ -11,24 +13,17 @@ class CagesController < ApplicationController
             @cages = @cages.where(matching_keys.map { |key| "#{key} = ?" }.join(" AND "), *matching_keys.map { |key| params[key] })
         end
         respond_to do |format|
-	        format.html
-			format.json { render json: @cages }
+	          format.html
+			      format.json { render json: @cages }
         end
     end
 
     def show
-        begin
-            @cage = Cage.find(params[:id])
-            @dinosaurs = @cage.dinosaurs
-            respond_to do |format|
-                format.html
-                format.json { render json: @cage }
-            end
-        rescue ActiveRecord::RecordNotFound
-            respond_to do |format|
-                format.html { redirect_to cages_path, alert: "Cage not found." }
-                format.json { render json: { error: "Cage not found." }, status: :not_found }
-            end
+        @cage = Cage.find(params[:id])
+        @dinosaurs = @cage.dinosaurs
+        respond_to do |format|
+            format.html
+            format.json { render json: @cage }
         end
     end
 
@@ -77,6 +72,13 @@ class CagesController < ApplicationController
                 format.html { redirect_to cages_path, alert: "Hey! You have dinosaurs in this cage, you can't let them out!" }
                 format.json { render json: @cage.errors, status: :unprocessable_entity }
             end
+        end
+    end
+
+    def invalid_cage
+        respond_to do |format|
+            format.html { redirect_to cages_path, alert: "Cage not found." }
+            format.json { render json: { error: "Cage not found." }, status: :not_found }
         end
     end
 
